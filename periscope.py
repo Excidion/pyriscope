@@ -1,5 +1,6 @@
 import streamlit as st
 from content.layout import BasePage, set_sidebar_width
+from content.model_handler import ModelHandlerPage
 from content.global_methods.Partial_Dependence_Plots import PartialDependencePlotsPage
 from content.global_methods.Accumulated_Local_Effects import AccumulatedLocalEffectsPage
 from content.global_methods.Feature_Interaction import FeatureInteractionPage
@@ -16,32 +17,32 @@ from content.local_methods.Shapley_Additive_Explanations import ShapleyAdditiveE
 
 set_sidebar_width(350)
 
-with st.sidebar.title("Periscope"):
-    st.sidebar.write("Take a look into your black box model.")
-    st.sidebar.markdown("""---""") 
+st.sidebar.title("Periscope")
+st.sidebar.write("Take a look into your black box model.")
+st.sidebar.markdown("""---""") 
 
-with st.sidebar.header("Model"):
-    #st.sidebar.write("")
-    BasePage("Upload a model")
-    BasePage("Test the model")
-    st.sidebar.markdown("""---""") 
+st.sidebar.header("Model")
+#st.sidebar.write("")
+model_handler = ModelHandlerPage()
+BasePage("Test the model")
+st.sidebar.markdown("""---""") 
 
-with st.sidebar.header("Global Methods"):
-    st.sidebar.write("Explain overall patterns.")
-    PartialDependencePlotsPage()
-    AccumulatedLocalEffectsPage()
-    FeatureInteractionPage()
-    FunctionalDecompositionPage()
-    GlobalSurrogatePage()
-    PermutationFeatureImportancePage()
-    st.sidebar.markdown("""---""") 
+st.sidebar.header("Global Methods")
+st.sidebar.write("Explain overall patterns.")
+PartialDependencePlotsPage()
+AccumulatedLocalEffectsPage()
+FeatureInteractionPage()
+FunctionalDecompositionPage()
+GlobalSurrogatePage()
+PermutationFeatureImportancePage()
+st.sidebar.markdown("""---""") 
 
-with st.sidebar.header("Local Methods"):
-    st.sidebar.write("Explain single predictions.")
-    IndividualConditionalExpectationCurvesPage()
-    LocalSurrogateModelsPage()
-    ConterfactualExplanationsPage()
-    ScopedRulesPage()
-    ShapleyValuesPage()
-    ShapleyAdditiveExplanationsPage()
-    st.sidebar.markdown("""---""") 
+st.sidebar.header("Local Methods")
+st.sidebar.write("Explain single predictions.")
+IndividualConditionalExpectationCurvesPage()
+LocalSurrogateModelsPage()
+ConterfactualExplanationsPage()
+ScopedRulesPage()
+ShapleyValuesPage()
+ShapleyAdditiveExplanationsPage()
+st.sidebar.markdown("""---""") 
