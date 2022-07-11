@@ -58,5 +58,5 @@ class ModelHandlerPage(BasePage):
                 if not y is None:
                     st.session_state["y"] = load(y)
 
-            st.wirte("") # newline space
+            st.write("") # newline space
             st.form_submit_button("Save model and data.")
