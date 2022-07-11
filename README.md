@@ -1,8 +1,9 @@
 # periscope
 
 ## Installation
+Requires an installation of Python 3.10.
 ```
-pip install -r requirementx.txt
+pip install -r requirements.txt
 ```
 ## Usage
 ```
