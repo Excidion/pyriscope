@@ -9,6 +9,7 @@ class BasePage:
     
     def build_page(self):
         with st.spinner(f"Preparing {self.title}..."):
+            st.title(self.title)
             self.get_content()
 
     def get_content(self): # this methods needs to be filled for the actual pages
