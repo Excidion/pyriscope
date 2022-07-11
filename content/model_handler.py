@@ -7,10 +7,8 @@ from joblib import load
 
 
 class ModelHandlerPage(BasePage):
-
     def __init__(self):
         super().__init__(title="Settings")
-
 
     def get_content(self):
         with st.form("settings"):
@@ -30,7 +28,6 @@ class ModelHandlerPage(BasePage):
                 )
                 if model is not None:
                     st.session_state["model"] = load(model)
-            st.markdown("""---""")
 
             st.header("Upload the test-dataset")
             st.write("Before training the model, you probalby split your dataset like")
@@ -61,4 +58,5 @@ class ModelHandlerPage(BasePage):
                 if not y is None:
                     st.session_state["y"] = load(y)
 
-            st.form_submit_button("Upload model and data.")
+            st.wirte("") # newline space
+            st.form_submit_button("Save model and data.")
