@@ -7,5 +7,5 @@ pip install -r requirements.txt
 ```
 ## Usage
 ```
-streamlit run periscope.py
+streamlit run Home.py
 ```
