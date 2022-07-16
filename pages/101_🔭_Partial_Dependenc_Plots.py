@@ -1,6 +1,3 @@
-import sys
-import pathlib
-sys.path.append(str(pathlib.Path().absolute())) # fix imports for streamlit
 import streamlit as st
 from content.layout import BasePage
 from content.model_utils import get_model, get_X, get_y, get_output_type
@@ -53,3 +50,5 @@ class PartialDependencePlotsPage(BasePage):
                 PartialDependenceDisplay.from_estimator(model, X.sample(samples), features, target=target, n_jobs=-1)
                 display_figure()
 
+
+PartialDependencePlotsPage()
