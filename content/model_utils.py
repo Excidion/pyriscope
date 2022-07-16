@@ -1,5 +1,20 @@
+from multiprocessing.sharedctypes import Value
 import streamlit as st
 import pandas as pd
+
+
+def get_output_type():
+    y = get_y()
+    if y.dtype == "object":
+        if y.nunique() > 2:
+            return "multilabel-classification"
+        else:
+            return "classification"
+    elif y.dtype == "float":
+        return "regression"
+    else:
+        raise ValueError(f"Outpuy type for {y.dtype} not defined.")       
+
 
 def get_model():
     return get_session_data("model")

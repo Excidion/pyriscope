@@ -2,13 +2,19 @@ import streamlit as st
 from time import sleep
 
 class BasePage:
-    def __init__(self, title):
+    def __init__(self, title, depends={"model"}):
         self.title = title
-        if st.sidebar.button(self.title):
-            self.build_page()
+        self.depends = depends
+        self.build_page()
     
     def build_page(self):
-        with st.spinner(f"Preparing {self.title}..."):
+        none_missing = True
+        for i in self.depends:
+            if not i in st.session_state.keys():
+                none_missing = False
+                st.warning(f"{self.title} requires {self.depends}. Please upload missing {i} in the 'Settings' page.")
+
+        if none_missing:
             st.title(self.title)
             self.get_content()
 
