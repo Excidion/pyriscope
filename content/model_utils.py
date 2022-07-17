@@ -18,7 +18,7 @@ def get_output_type():
     y = get_y()
     if y.dtype == "object":
         if y.nunique() > 2:
-            return "multilabel-classification"
+            return "multiclass-classification"
         else:
             return "classification"
     elif y.dtype == "float":

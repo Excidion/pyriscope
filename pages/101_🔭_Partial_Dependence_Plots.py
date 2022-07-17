@@ -22,7 +22,7 @@ class PartialDependencePlotsPage(BasePage):
         model = get_model()
         X = get_X()
 
-        if get_output_type() == "multilabel-classification": # check for multiclass
+        if get_output_type() == "multiclass-classification": # check for multiclass
             y = get_y()
             target = st.selectbox("Target", y.unique())
         else:
