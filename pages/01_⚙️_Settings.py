@@ -22,7 +22,9 @@ with st.container():
         type = ["pkl", "pickle"]
     )
     if model is not None:
-        st.session_state["model"] = load(model)
+        with st.spinner("Processing `model`"):
+            st.session_state["model"] = load(model)
+            st.info("Done.")
 
 st.header("Upload the test-dataset")
 st.write("Before training the model, you probalby split your dataset like")
@@ -44,7 +46,9 @@ with data:
         type = ["pq", "parquet"]
     )
     if X is not None:
-        st.session_state["X"] = pd.read_parquet(X)
+        with st.spinner("Processing `X`"):
+            st.session_state["X"] = pd.read_parquet(X)
+            st.info("Done.")
     
 
 with label:
@@ -54,4 +58,6 @@ with label:
         type = ["pq", "parquet"]
     )
     if y is not None:
-        st.session_state["y"] = pd.read_parquet(y).iloc[:, 0]
+        with st.spinner("Processing `y`"):
+            st.session_state["y"] = pd.read_parquet(y).iloc[:, 0]
+            st.info("Done.")
