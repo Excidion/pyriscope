@@ -11,7 +11,7 @@ class AccumulatedLocalEffectsPage(BasePage):
     def __init__(self):
         super().__init__(
             title = "Accumulated Local Effects",
-            depends = {"model", "X"},
+            depends = {"model", "X", "y"},
         )
 
     def get_content(self):
