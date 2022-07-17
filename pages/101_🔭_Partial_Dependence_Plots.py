@@ -1,9 +1,8 @@
 import streamlit as st
 from content.layout import BasePage
-from content.model_utils import get_model, get_X, get_y, get_output_type
+from content.model_utils import get_model, get_X, get_y, get_output_type, log10_sampling_slider
 from sklearn.inspection import PartialDependenceDisplay
 from content.plot_utils import display_figure
-from math import log10
 
 
 class PartialDependencePlotsPage(BasePage):
@@ -38,12 +37,7 @@ class PartialDependencePlotsPage(BasePage):
             feature2 = st.selectbox("Feature 2", X.columns)
             features = [(feature1, feature2)]
 
-        samples = st.select_slider(
-            label = "Sample Size",
-            options = [10**m for m in range(int(log10(len(X))))] + [len(X)],
-            value = len(X),
-            help = "This calculation might take some minutes and ca be most easily reduced by adjusting the number of samples from `X` used."
-        )
+        samples = log10_sampling_slider(maxsize=len(X))
 
         if st.button("Calculate Plot"):
             with st.spinner(f"Preparing {self.title}..."):

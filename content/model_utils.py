@@ -1,6 +1,17 @@
 from multiprocessing.sharedctypes import Value
 import streamlit as st
 import pandas as pd
+from math import log10
+
+
+def log10_sampling_slider(maxsize):
+    slider = st.select_slider(
+        label = "Sample Size",
+        options = [10**m for m in range(int(log10(maxsize)) + 1)] + [maxsize],
+        value = maxsize,
+        help = "This calculation might take some minutes and ca be most easily reduced by adjusting the number of samples from `X` used."
+    )
+    return slider
 
 
 def get_output_type():
