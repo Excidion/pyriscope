@@ -6,7 +6,7 @@ activate_neon_plots()
 set_sidebar_width(400)
 
 
-st.title("Periscope")
+st.title("Pyriscope")
 st.caption("Take a look into your black box models.")
 st.write(
     "This application tries to help you to get to know your Machine Learning Models. "

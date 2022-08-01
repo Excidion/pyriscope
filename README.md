@@ -1,4 +1,4 @@
-# periscope
+# Pyriscope
 
 ## Installation
 Requires an installation of Python 3.10.
