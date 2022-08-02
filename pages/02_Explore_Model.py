@@ -12,8 +12,14 @@ if model is None:
 else:
     with st.expander("Model details"):    
         st.code(repr(model))
-        st.write("with the following parameters")
-        st.json(model.get_params())
+        try:
+            params = model.get_params()
+        except AttributeError:
+            st.write("Cloud not display further info, since `model.get_params()` does not exist.")
+        else:
+            st.write("with the following parameters")
+            st.json(params)
+
 
 X = get_X()
 if X is None:
