@@ -2,7 +2,7 @@ import sys
 import pathlib
 sys.path.append(str(pathlib.Path().absolute())) # fix imports for streamlit
 import streamlit as st
-from joblib import load
+from cloudpickle import load
 import pandas as pd
 
 
@@ -11,15 +11,15 @@ st.title("Settings")
 with st.container():
     st.header("Upload a model")
     st.write("Save your model to disk with the following command:")
-    st.code('''
-        from joblib import dump
-        \ndump(model, "model.pkl")
-    ''')
+    st.code("""
+        from cloudpickle import dump
+        \nwith open("model.cldpkl", "wb") as filecontent:\n\tdump(model, filecontent)
+    """)
     st.markdown("A model can be any python object that has a `predict` method.")
 
     model = st.file_uploader(
         "Choose a model file",
-        type = ["pkl", "pickle"]
+        type = ["cldpkl", "cloudpickle"]
     )
     if model is not None:
         with st.spinner("Processing `model`"):
