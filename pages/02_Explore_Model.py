@@ -12,10 +12,9 @@ if model is None:
 else:
     with st.expander("Model details"):    
         st.code(repr(model))
-        try:
-            params = model.get_params()
-        except AttributeError:
-            st.write("Cloud not display further info, since `model.get_params()` does not exist.")
+        params = get_model_params(model)
+        if params is None:
+            st.write(f"No method for extracting parameters for mode class `{model.__class__.__name__}`")
         else:
             st.write("with the following parameters")
             st.json(params)

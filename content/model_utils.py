@@ -27,6 +27,15 @@ def get_output_type():
         raise ValueError(f"Outpuy type for {y.dtype} not defined.")       
 
 
+def get_model_params(model=None):
+    if model is None:
+        model = get_model()
+    try: # sklearn style 
+        return model.get_params()
+    except AttributeError:
+        return None
+
+
 def get_model():
     return get_session_data("model")
 
