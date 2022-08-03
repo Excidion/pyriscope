@@ -1,5 +1,5 @@
 import streamlit as st
-from content.model_utils import get_model, get_X, get_y, undummify
+from content.model_utils import get_model, get_X, get_y, undummify, get_model_params
 from sklearn.metrics import get_scorer, get_scorer_names
 import pandas as pd
 
