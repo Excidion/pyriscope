@@ -1,6 +1,3 @@
-import sys
-import pathlib
-sys.path.append(str(pathlib.Path().absolute())) # fix imports for streamlit
 import streamlit as st
 from cloudpickle import load
 import pandas as pd
