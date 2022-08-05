@@ -1,9 +1,7 @@
 import streamlit as st
-from content.layout import BasePage, set_sidebar_width
 from content.plot_utils import activate_neon_plots
 
 activate_neon_plots()
-set_sidebar_width(400)
 
 
 st.title("Pyriscope")
