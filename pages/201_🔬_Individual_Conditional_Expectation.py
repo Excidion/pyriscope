@@ -30,6 +30,11 @@ class IndividualConditionalExpectationPage(BasePage):
 
         samples = log10_sampling_slider(maxsize=len(X))
 
+        centered = st.checkbox(
+            "Center plot", 
+            help = "Makes sure the graph starts at `(x=0, y=0)`."
+        )
+
         if st.button("Calculate Plot"):
             with st.spinner(f"Preparing {self.title}..."):
                 PartialDependenceDisplay.from_estimator(
@@ -40,6 +45,7 @@ class IndividualConditionalExpectationPage(BasePage):
                     kind = "individual", 
                     n_jobs = -1,
                     subsample = int(samples),
+                    centered = centered,
                 )
                 display_figure()
 

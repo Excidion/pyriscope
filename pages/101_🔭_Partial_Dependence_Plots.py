@@ -39,9 +39,21 @@ class PartialDependencePlotsPage(BasePage):
 
         samples = log10_sampling_slider(maxsize=len(X))
 
+        centered = st.checkbox(
+            "Center plot", 
+            help = "Makes sure the graph starts at `(0,0)`."
+        )
+
         if st.button("Calculate Plot"):
             with st.spinner(f"Preparing {self.title}..."):
-                PartialDependenceDisplay.from_estimator(model, X.sample(samples), features, target=target, n_jobs=-1)
+                PartialDependenceDisplay.from_estimator(
+                    model, 
+                    X.sample(samples), 
+                    features, 
+                    target = target, 
+                    n_jobs = -1,
+                    centered = centered,
+                )
                 display_figure()
 
 
