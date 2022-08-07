@@ -52,6 +52,36 @@ def get_session_data(key):
         return None
 
 
+def model_input_form(X):
+    settings = dict()
+    with st.expander("Change Input values"):
+        with st.form("Change Input values"):
+            with st.spinner("Loading input variables"):
+                X_og = undummify(X)
+                for i, var_name in enumerate(X_og.columns):
+                    var_data = X_og[var_name]
+                    dtype = var_data.dtype
+                    if dtype == "object":
+                        settings[var_name] = st.selectbox(var_name, var_data.unique())
+                    elif dtype == "int":
+                        lower = int(var_data.min())
+                        upper = int(var_data.max())
+                        default = int(var_data.median())
+                        settings[var_name] = st.slider(var_name, min_value=lower, max_value=upper, value=default, step = 1)
+                    elif dtype == "float":
+                        lower = float(var_data.min())
+                        upper = float(var_data.max())
+                        default = float(var_data.median())
+                        settings[var_name] = st.slider(var_name, min_value=lower, max_value=upper, value=default)
+                    else:
+                        st.error(f"Problem with {var_name}: Selector for dtype {dtype} not implemented.")
+            st.form_submit_button("Make prediction")
+
+    X_pred = pd.get_dummies(X_og.append(settings, ignore_index=True)) # connect with X_og to have consistent dummy columns
+    X_pred = X_pred[X.columns] # ensure the right order of columns
+    X_pred = X_pred.iloc[-1]
+    return settings, X_pred
+
 def undummify(df, prefix_sep="_"):
     cols2collapse = {
         item.split(prefix_sep)[0]: (prefix_sep in item) for item in df.columns
