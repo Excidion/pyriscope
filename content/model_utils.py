@@ -9,7 +9,7 @@ def log10_sampling_slider(maxsize):
         label = "Sample Size",
         options = [10**m for m in range(int(log10(maxsize)) + 1)] + [maxsize],
         value = maxsize,
-        help = "This calculation might take some minutes and ca be most easily reduced by adjusting the number of samples from `X` used."
+        help = "This calculation might take some time and can be most easily sped up adjusting the number of samples from `X` used."
     )
     return slider
 
