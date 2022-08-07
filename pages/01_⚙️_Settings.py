@@ -1,6 +1,7 @@
 import streamlit as st
 from cloudpickle import load
 import pandas as pd
+from content.model_utils import get_model, get_X, get_y
 
 
 st.title("Settings")
@@ -21,7 +22,8 @@ with st.container():
     if model is not None:
         with st.spinner("Processing `model`"):
             st.session_state["model"] = load(model)
-            st.info("Done.")
+    if get_model() is not None:
+        st.success("Model uploaded.")
 
 st.header("Upload the test-dataset")
 st.write("Before training the model, you probalby split your dataset like")
@@ -45,8 +47,8 @@ with data:
     if X is not None:
         with st.spinner("Processing `X`"):
             st.session_state["X"] = pd.read_parquet(X)
-            st.info("Done.")
-    
+    if get_X() is not None:
+        st.success("Data uploaded.")
 
 with label:
     st.markdown("Upload `y_test.pq` here:")
@@ -57,4 +59,5 @@ with label:
     if y is not None:
         with st.spinner("Processing `y`"):
             st.session_state["y"] = pd.read_parquet(y).iloc[:, 0]
-            st.info("Done.")
+    if get_y() is not None:
+        st.success("Labels uploaded.")
