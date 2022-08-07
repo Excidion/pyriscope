@@ -23,14 +23,14 @@ else:
 X = get_X()
 if X is None:
     st.warning("No data has been uploaded.")
+else:
+    with st.expander("Inspect data"):
+        st.dataframe(X)
 
 y = get_y()
 if y is None:
     st.warning("No labels has been uploaded.")
 
-if X is not None:
-    with st.expander("Inspect data"):
-        st.dataframe(X)
 
 if model is not None and X is not None and y is not None:
     with st.expander("Scoring"):
