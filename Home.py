@@ -22,19 +22,19 @@ st.write(
 )
 st.write("The application is separated into four main sections:")
 
-st.subheader("Settings")
+st.subheader("Settings :gear:")
 st.write("For uploading your model and data - this should be your first step.")
 
-st.subheader("Explore Model")
+st.subheader("Explore Model :joystick:")
 st.write("Take a look at your model and try out how different input values influence prediction results.")
 
-st.subheader("Global Methods 🔭")
+st.subheader("Global Methods :telescope:")
 st.write(   
     "Tools and Methods to understand which general patterns the model has learned. ", 
     "Global interpretation methods describe average behavior, they are particularly useful when you want to understand the general mechanisms in the data or debug a model. "
 )
 
-st.subheader("Local Methods 🔬")
+st.subheader("Local Methods :microscope:")
 st.write(
     "Tools and Methods to understand why a specific prediction was made. ",
     "Local interpretation methods explain individual predictions. "
