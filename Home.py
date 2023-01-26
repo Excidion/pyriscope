@@ -1,6 +1,14 @@
 import streamlit as st
 from content.plot_utils import activate_neon_plots
 
+
+st.set_page_config(
+    page_title = " Pyriscope",
+    menu_items={
+        'Report a bug': "https://github.com/Excidion/pyriscope/issues",
+    }
+)
+
 activate_neon_plots()
 
 
